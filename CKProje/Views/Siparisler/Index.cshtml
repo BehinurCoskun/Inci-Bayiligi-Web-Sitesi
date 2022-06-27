@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CKModel.Models.Siparisler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="container">
+    <div class="align-content-md-end">
+
+        <h1>Sipariş Sayfası</h1>
+        <br />
+        <p>
+            <a asp-action="Create" class="btn btn-success">Siparis Ekle</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UrunAdi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SiparisTarihi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Maliyet)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UrunAdi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiparisTarihi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Maliyet)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SiparisID" class="btn btn-primary">Düzenle </a>  |
+
+                            <a asp-action="Delete" asp-route-id="@item.SiparisID" class="btn btn-danger">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+
+        <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Anasayfaya Git</a>
+
+
+    </div>
+    </div>
+
+
+
+      

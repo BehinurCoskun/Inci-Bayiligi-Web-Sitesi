@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CKModel.Models.Urunler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="align-content-md-end">
+
+        <h1>Ürünler Sayfası</h1>
+        <br />
+        <p>
+            <a asp-action="Create" class="btn btn-success">Ürün Ekle</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UrunAdi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fiyat)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UrunAdi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fiyat)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.UrunID" class="btn btn-primary">Düzenle </a>  |
+
+                            <a asp-action="Delete" asp-route-id="@item.UrunID" class="btn btn-danger">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Anasayfaya Git</a>
+
+    </div>
+    </div>
+
+
+       

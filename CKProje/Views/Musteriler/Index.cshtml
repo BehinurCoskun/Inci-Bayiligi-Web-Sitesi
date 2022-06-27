@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CKModel.Models.Musteriler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="container">
+    <div class="align-content-md-end">
+        <h1>Müşteriler Sayfası</h1>
+        <br />
+        <p>
+            <a asp-action="Create" class="btn btn-success">Müşteri Ekle</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MusteriAdi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UrunAdi)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MusteriAdi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UrunAdi)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.MusteriID" class="btn btn-primary">Düzenle </a>  |
+
+                            <a asp-action="Delete" asp-route-id="@item.MusteriID" class="btn btn-danger">Sil</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <div>
+            <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Anasayfaya Git</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
